@@ -1,0 +1,3 @@
+[submodule "lib/kohya_ss"]
+	path = lib/kohya_ss
+	url = https://github.com/Birch-san/kohya_ss.git
