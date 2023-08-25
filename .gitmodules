@@ -1,3 +1,6 @@
 [submodule "lib/kohya_ss"]
 	path = lib/kohya_ss
 	url = https://github.com/Birch-san/kohya_ss.git
+[submodule "lib/sdxl-play"]
+	path = lib/sdxl-play
+	url = https://github.com/Birch-san/sdxl-play.git
