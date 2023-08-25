@@ -40,7 +40,7 @@ def convert(args):
             unet,
             logit_scale,
             ckpt_info,
-        ) = model_util.load_models_from_sdxl_checkpoint(model_util.MODEL_VERSION_SDXL_BASE_V0_9, args.model_to_load, 'cpu')
+        ) = model_util.load_models_from_sdxl_checkpoint(model_util.MODEL_VERSION_SDXL_BASE_V1_0, args.model_to_load, 'cpu')
     else:
         pipe: StableDiffusionXLPipeline = StableDiffusionXLPipeline.from_pretrained(
             args.model_to_load, torch_dtype=load_dtype, tokenizer=None, safety_checker=None
