@@ -23,6 +23,19 @@ pip install -r requirements.txt
 
 ## Usage
 
+Here we will load an OG SDXL checkpoint and output it into a directory.
+
+We load `/mnt/wd-dataset/wdxl-dist/wdxl-step00006000.safetensors`,
+and output a Diffusers distribution into `/mnt/wd-dataset/wdxl-dist-diffusers/wdxl-step00006000`.
+
+Run (from the root of this repository):
+
 ```bash
-python -m script.convert_sdxl_og_ckpt_to_diffusers
+mkdir -p /mnt/wd-dataset/wdxl-dist-diffusers/wdxl-step00006000
+PYTHONPATH="$PWD/lib/kohya_ss:$PYTHONPATH" python -m script.convert_sdxl_og_ckpt_to_diffusers \
+--fp16 \
+--use_safetensors \
+--reference_model stabilityai/stable-diffusion-xl-base-1.0 \
+/mnt/wd-dataset/wdxl-dist/wdxl-step00006000.safetensors \
+/mnt/wd-dataset/wdxl-dist-diffusers/wdxl-step00006000
 ```
