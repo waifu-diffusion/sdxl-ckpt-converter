@@ -79,6 +79,7 @@ def convert(args):
             vae,
             args.use_safetensors,
             save_dtype,
+            save_variant=args.save_variant,
         )
         print(f"model saved.")
 
@@ -115,6 +116,12 @@ def setup_parser() -> argparse.ArgumentParser:
         "--use_safetensors",
         action="store_true",
         help="use safetensors format to save Diffusers model (checkpoint depends on the file extension) / Duffusersモデルをsafetensors形式で保存する（checkpointは拡張子で自動判定）",
+    )
+    parser.add_argument(
+        "--save_variant",
+        type=str,
+        default=None,
+        help="Rather than saving the default diffusion_pytorch_model.safetensors: you can set 'fp16' variant, to qualify file extension as: diffusion_pytorch_model.fp16.safetensors. Users can select this by loading with `variant='fp16'`.",
     )
 
     parser.add_argument(

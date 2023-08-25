@@ -12,6 +12,7 @@
       "justMyCode": false,
       "args": [
         "--fp16",
+        "--save_variant", "fp16",
         "--use_safetensors",
         "--reference_model", "${input:referenceModel}",
         "${input:inputFinetunedModel}",

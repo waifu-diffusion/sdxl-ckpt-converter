@@ -21,7 +21,7 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-## Usage
+## Converting checkpoints
 
 Here we will load an OG SDXL checkpoint and output it into a directory.
 
@@ -34,8 +34,35 @@ Run (from the root of this repository):
 mkdir -p /mnt/wd-dataset/wdxl-dist-diffusers/wdxl-step00006000
 PYTHONPATH="lib/kohya_ss:$PYTHONPATH" python -m script.convert_sdxl_og_ckpt_to_diffusers \
 --fp16 \
+--save_variant fp16 \
 --use_safetensors \
 --reference_model stabilityai/stable-diffusion-xl-base-1.0 \
 /mnt/wd-dataset/wdxl-dist/wdxl-step00006000.safetensors \
 /mnt/wd-dataset/wdxl-dist-diffusers/wdxl-step00006000
+```
+
+## Verifying a converted checkpoint
+
+Install inference dependencies:
+
+```bash
+pip install -r lib/sdxl-play/requirements_diffusers.txt
+# can't specify --no-deps in a requirements file, so we have to do this part separately
+pip install invisible-watermark --no-deps
+```
+
+Make waifu (fixed prompt, varied seeds):
+
+```bash
+cd lib/sdxl-play
+python -m scripts.sdxl_kdiff_play \
+--base_unet /mnt/wd-dataset/wdxl-dist-diffusers/wdxl-step00006000
+```
+
+Make waifu (fixed seed, varied prompts):
+
+```bash
+cd lib/sdxl-play
+python -m scripts.sdxl_kdiff_latent_walk \
+--base_unet /mnt/wd-dataset/wdxl-dist-diffusers/wdxl-step00006000
 ```
