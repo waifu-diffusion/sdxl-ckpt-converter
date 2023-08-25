@@ -13,14 +13,57 @@
       "args": [
         "--fp16",
         "--use_safetensors",
-        "--reference_model",
-        "${input:referenceModel}",
+        "--reference_model", "${input:referenceModel}",
         "${input:inputFinetunedModel}",
         "${input:outputDir}",
       ],
       "env": {
-        "PYTHONPATH": "${workspaceFolder}/lib/kohya_ss:${env.PYTHONPATH}"
+        "PYTHONPATH": "lib/kohya_ss:${env.PYTHONPATH}"
       }
+    },
+    {
+      "name": "Python: Demo SDXL Diffusers checkpoint (fixed prompt, varied seeds)",
+      "type": "python",
+      "request": "launch",
+      "module": "scripts.sdxl_kdiff_play",
+      "justMyCode": false,
+      "args": [
+        "--base_unet", "${input:outputDir}",
+      ],
+      "cwd": "${workspaceFolder}/lib/sdxl-play"
+    },
+    {
+      "name": "Python: Demo SDXL Diffusers checkpoint (fixed seed, varied prompts)",
+      "type": "python",
+      "request": "launch",
+      "module": "scripts.sdxl_kdiff_latent_walk",
+      "justMyCode": false,
+      "args": [
+        "--base_unet", "${input:outputDir}",
+      ],
+      "cwd": "${workspaceFolder}/lib/sdxl-play"
+    },
+    {
+      "name": "Python: Demo SDXL Diffusers checkpoint (diffusers pipeline -- full distribution)",
+      "type": "python",
+      "request": "launch",
+      "module": "scripts.wdxl_diffusers_play",
+      "justMyCode": false,
+      "args": [
+        "--model", "${input:outputDir}",
+      ],
+      "cwd": "${workspaceFolder}/lib/sdxl-play"
+    },
+    {
+      "name": "Python: Demo SDXL Diffusers checkpoint (diffusers pipeline, UNet-only distribution) [not finished]",
+      "type": "python",
+      "request": "launch",
+      "module": "scripts.wdxl_diffusers_play",
+      "justMyCode": false,
+      "args": [
+        "--base_unet", "${input:outputDir}",
+      ],
+      "cwd": "${workspaceFolder}/lib/sdxl-play"
     }
   ],
   "inputs": [
