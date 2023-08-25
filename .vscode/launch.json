@@ -1,0 +1,15 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Convert SDXL OG ckpt to Diffusers",
+      "type": "python",
+      "request": "launch",
+      "module": "script.convert_sdxl_og_ckpt_to_diffusers",
+      "justMyCode": false,
+    }
+  ]
+}
