@@ -53,18 +53,20 @@ pip install invisible-watermark --no-deps
 MAX_JOBS=4 pip install 'flash-attn>=2.1.0' --no-build-isolation
 ```
 
-Make waifu (fixed prompt, varied seeds):
+**Make waifu (fixed prompt, varied seeds):**
 
 ```bash
 cd lib/sdxl-play
 python -m scripts.sdxl_kdiff_play \
 --base_unet /mnt/wd-dataset/wdxl-dist-diffusers/wdxl-step00006000
-```
+```  
+_Images will be output to `lib/sdxl-play/out`._
 
-Make waifu (fixed seed, varied prompts):
+**Make waifu (fixed seed, varied prompts):**
 
 ```bash
 cd lib/sdxl-play
 python -m scripts.sdxl_kdiff_latent_walk \
 --base_unet /mnt/wd-dataset/wdxl-dist-diffusers/wdxl-step00006000
-```
+```  
+_Images will be output to `lib/sdxl-play/out`._

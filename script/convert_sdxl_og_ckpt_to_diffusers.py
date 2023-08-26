@@ -40,7 +40,7 @@ def convert(args):
             unet,
             logit_scale,
             ckpt_info,
-        ) = model_util.load_models_from_sdxl_checkpoint(model_util.MODEL_VERSION_SDXL_BASE_V1_0, args.model_to_load, 'cpu')
+        ) = model_util.load_models_from_sdxl_checkpoint(model_util.MODEL_VERSION_SDXL_BASE_V1_0, args.model_to_load, 'cpu', unet_only=args.unet_only)
     else:
         pipe: StableDiffusionXLPipeline = StableDiffusionXLPipeline.from_pretrained(
             args.model_to_load, torch_dtype=load_dtype, tokenizer=None, safety_checker=None
@@ -80,6 +80,7 @@ def convert(args):
             args.use_safetensors,
             save_dtype,
             save_variant=args.save_variant,
+            unet_only=args.unet_only,
         )
         print(f"model saved.")
 
@@ -122,6 +123,11 @@ def setup_parser() -> argparse.ArgumentParser:
         type=str,
         default=None,
         help="Rather than saving the default diffusion_pytorch_model.safetensors: you can set 'fp16' variant, to qualify file extension as: diffusion_pytorch_model.fp16.safetensors. Users can select this by loading with `variant='fp16'`.",
+    )
+    parser.add_argument(
+        "--unet_only",
+        action="store_true",
+        help="saves out only the UNet (but still into a unet subfolder)",
     )
 
     parser.add_argument(

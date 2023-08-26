@@ -23,6 +23,25 @@
       }
     },
     {
+      "name": "Python: Convert SDXL OG ckpt to Diffusers (UNet only)",
+      "type": "python",
+      "request": "launch",
+      "module": "script.convert_sdxl_og_ckpt_to_diffusers",
+      "justMyCode": false,
+      "args": [
+        "--fp16",
+        "--save_variant", "fp16",
+        "--use_safetensors",
+        "--unet_only",
+        "--reference_model", "${input:referenceModel}",
+        "${input:inputFinetunedModel}",
+        "${input:outputDir}",
+      ],
+      "env": {
+        "PYTHONPATH": "lib/kohya_ss:${env.PYTHONPATH}"
+      }
+    },
+    {
       "name": "Python: Demo SDXL Diffusers checkpoint (fixed prompt, varied seeds)",
       "type": "python",
       "request": "launch",
@@ -78,13 +97,13 @@
       "id": "inputFinetunedModel",
       "description": "Finetuned SDXL base model to convert, in OG format (one big .safetensors file)",
       "type": "promptString",
-      "default": "/mnt/wd-dataset/wdxl-dist/wdxl-step00006000.safetensors",
+      "default": "/mnt/wd-dataset/wdxl-dist/wdxl-step00039250.safetensors",
     },
     {
       "id": "outputDir",
       "description": "Directory into which to output the converted SDXL model in Diffusers format. Will create a unet subdirectory and output the base UNet there.",
       "type": "promptString",
-      "default": "/mnt/wd-dataset/wdxl-dist-diffusers/wdxl-step00006000",
+      "default": "/mnt/wd-dataset/wdxl-dist-diffusers/wdxl-step00039250",
     },
   ],
 }
