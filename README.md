@@ -49,6 +49,8 @@ Install inference dependencies:
 pip install -r lib/sdxl-play/requirements_diffusers.txt
 # can't specify --no-deps in a requirements file, so we have to do this part separately
 pip install invisible-watermark --no-deps
+# install flash attention
+MAX_JOBS=4 pip install 'flash-attn>=2.1.0' --no-build-isolation
 ```
 
 Make waifu (fixed prompt, varied seeds):
@@ -59,7 +61,7 @@ python -m scripts.sdxl_kdiff_play \
 --base_unet /mnt/wd-dataset/wdxl-dist-diffusers/wdxl-step00006000
 ```
 
-Make waifu (fixed seed, varied prompts):
+Make waifu (fixed seed, varied prompts) **I haven't finished implementing this one**:
 
 ```bash
 cd lib/sdxl-play
