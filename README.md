@@ -61,7 +61,7 @@ python -m scripts.sdxl_kdiff_play \
 --base_unet /mnt/wd-dataset/wdxl-dist-diffusers/wdxl-step00006000
 ```
 
-Make waifu (fixed seed, varied prompts) **I haven't finished implementing this one**:
+Make waifu (fixed seed, varied prompts):
 
 ```bash
 cd lib/sdxl-play

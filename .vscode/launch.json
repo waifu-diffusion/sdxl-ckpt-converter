@@ -34,7 +34,7 @@
       "cwd": "${workspaceFolder}/lib/sdxl-play"
     },
     {
-      "name": "Python: Demo SDXL Diffusers checkpoint (fixed seed, varied prompts) [not finished]",
+      "name": "Python: Demo SDXL Diffusers checkpoint (fixed seed, varied prompts)",
       "type": "python",
       "request": "launch",
       "module": "scripts.sdxl_kdiff_latent_walk",
